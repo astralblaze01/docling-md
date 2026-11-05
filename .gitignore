@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.py[cod]
+setup.log
+*.log
+.env
+.env.*
+!.env.example
+.docling-md-cache/
+work/
