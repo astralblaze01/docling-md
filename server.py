@@ -79,6 +79,9 @@ def _get_converter(ocr: bool, formulas: bool, device: str | None = None):
     with _conv_lock:
         if key in _converters:
             return _converters[key]
+        if device == "xpu":
+            from xpu_compat import enable_xpu_postprocess_workaround
+            enable_xpu_postprocess_workaround()
         from docling.datamodel.base_models import InputFormat
         from docling.datamodel.pipeline_options import PdfPipelineOptions
         from docling.document_converter import DocumentConverter, PdfFormatOption

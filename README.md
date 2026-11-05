@@ -52,6 +52,9 @@ PDF를 채팅에 그대로 첨부하면 페이지마다 텍스트와 페이지 �
 - Windows 오류 `4551`이 나오면 앱 제어 정책이 GPU DLL을 차단한 상태입니다.
   설치는 CPU로 계속됩니다.
 - 직접 측정: `.venv\Scripts\python.exe server.py bench sample.pdf --repeats 2`
+- Intel Arc에서 `Storage size calculation overflowed`가 나던 문제를 우회합니다.
+  모델 추론은 XPU에 두고, RT-DETR 결과 필터링만 CPU에서 처리합니다.
+  기존 설치라면 Claude를 완전히 종료 후 다시 실행하면 적용됩니다.
 - 장치 강제 설치: `setup.bat cpu` / `setup.bat cuda` / `setup.bat xpu`
 - 지금 잡히는 장치 확인: `.venv\Scripts\python.exe server.py device`
 
